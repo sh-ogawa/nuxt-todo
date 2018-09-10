@@ -1,0 +1,12 @@
+{
+  "name": "nuxt-todo",
+  "scripts": {
+    "dev": "nuxt"
+  },
+  "dependencies": {
+    "axios": "^0.18.0",
+    "npm": "^6.4.1",
+    "nuxt": "^1.4.2",
+    "todomvc-app-css": "^2.0.6"
+  }
+}
