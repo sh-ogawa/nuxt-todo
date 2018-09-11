@@ -46,17 +46,17 @@
         computed: {
             todos () {
                 if (this.$route.params.slug === 'active') {
-                    return this.$store.getters.activeTodos
+                    return this.$store.getters['todos/activeTodos']
                 }
                 if (this.$route.params.slug === 'completed') {
-                    return this.$store.getters.completedTodos
+                    return this.$store.getters['todos/completedTodos']
                 }
-                return this.$store.getters.allTodos
+                return this.$store.getters['todos/allTodos']
             }
         },
         methods: {
             allDone () {
-                this.$store.dispatch('allDone')
+                this.$store.dispatch('todos/allDone')
             },
             editTodo (todo) {
                 this.beforeEditCache = todo.title
@@ -66,7 +66,7 @@
                 this.editedTodo = null
                 todo.title = todo.title.trim()
                 if (!todo.title) {
-                    this.$store.dispatch('removeTodo', todo)
+                    this.$store.dispatch('todos/removeTodo', todo)
                 }
             },
             cancelEdit (todo) {
@@ -74,10 +74,10 @@
                 todo.title = this.beforeEditCache
             },
             removeTodo (todo) {
-                this.$store.dispatch('removeTodo', todo)
+                this.$store.dispatch('todos/removeTodo', todo)
             },
             save () {
-                this.$store.dispatch('saveTodos')
+                this.$store.dispatch('todos/saveTodos')
             }
         },
         directives: {

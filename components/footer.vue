@@ -22,18 +22,18 @@
     export default {
         computed: {
             todos () {
-                return this.$store.getters.allTodos
+                return this.$store.getters['todos/allTodos']
             },
             actives () {
-                return this.$store.getters.activeTodos
+                return this.$store.getters['todos/activeTodos']
             },
             remaining () {
-                return this.$store.getters.activeTodos.length
+                return this.$store.getters['todos/activeTodos'].length
             }
         },
         methods: {
             removeCompleted () {
-                this.$store.dispatch('setTodos', this.actives)
+                this.$store.dispatch('todos/setTodos', this.actives)
             }
         }
     }

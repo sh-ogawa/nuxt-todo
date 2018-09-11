@@ -12,9 +12,9 @@
         },
         methods: {
             addTodo () {
-                var value = this.todo && this.todo.trim()
+                const value = this.todo && this.todo.trim()
                 if (value) {
-                    this.$store.dispatch('addTodo', { title: value, completed: this.$route.params.slug === 'completed' })
+                    this.$store.dispatch('todos/addTodo', { title: value, completed: this.$route.params.slug === 'completed' })
                     this.todo = ''
                 }
             }
