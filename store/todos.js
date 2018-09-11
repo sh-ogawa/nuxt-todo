@@ -54,7 +54,7 @@ export const actions = {
         commit(Mutation.FILTER_TODOS, values)
     },
     saveTodos ({ state }) {
-        axios.put('/api/todos', { todos: state.todos })
+        //axios.put('/api/todos', { todos: state.todos })
     },
     nuxtServerInit ({ commit }, { req }) {
         commit(Mutation.SET_TODOS, req.session ? (req.session.todos || []) : [])
