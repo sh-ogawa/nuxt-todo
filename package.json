@@ -4,8 +4,8 @@
     "dev": "nuxt"
   },
   "dependencies": {
+    "@nuxtjs/dotenv": "^1.1.1",
     "axios": "^0.18.0",
-    "dotenv": "^6.0.0",
     "firebase": "^5.5.0",
     "npm": "^6.4.1",
     "nuxt": "^1.4.2",

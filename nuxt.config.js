@@ -16,5 +16,8 @@ module.exports = {
     ],
     router: {
         linkActiveClass: 'selected'
-    }
+    },
+    modlues: [
+        '@nuxtjs/dotenv'
+    ]
 }

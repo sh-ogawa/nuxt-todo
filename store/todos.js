@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import axios from 'axios'
 import  * as Mutation  from './todos-mutation-types'
+import firebase from '~/plugins/firebase'
 
 Vue.use(Vuex)
 
@@ -55,6 +55,7 @@ export const actions = {
     },
     saveTodos ({ state }) {
         //axios.put('/api/todos', { todos: state.todos })
+        firebase.database().ref('todos').push(todo)
     },
     nuxtServerInit ({ commit }, { req }) {
         commit(Mutation.SET_TODOS, req.session ? (req.session.todos || []) : [])
