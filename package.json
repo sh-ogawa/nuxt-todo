@@ -5,8 +5,11 @@
   },
   "dependencies": {
     "axios": "^0.18.0",
+    "dotenv": "^6.0.0",
+    "firebase": "^5.5.0",
     "npm": "^6.4.1",
     "nuxt": "^1.4.2",
-    "todomvc-app-css": "^2.0.6"
+    "todomvc-app-css": "^2.0.6",
+    "vuesax": "^3.2.26"
   }
 }

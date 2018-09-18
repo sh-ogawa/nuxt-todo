@@ -1,5 +1,6 @@
 module.exports = {
     head: {
+        mode: 'spa',
         title: 'TodoMVC made with Nuxt.js',
         meta: [
             { charset: 'utf-8' },
