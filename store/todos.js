@@ -55,7 +55,10 @@ export const actions = {
     },
     saveTodos ({ state }) {
         //axios.put('/api/todos', { todos: state.todos })
-        firebase.database().ref('todos').push(todo)
+        const key = firebase.database().ref('todos').push().key
+        firebase.database().ref('todos/1234').set({
+            name: 'sh-ogawa'
+        })
     },
     nuxtServerInit ({ commit }, { req }) {
         commit(Mutation.SET_TODOS, req.session ? (req.session.todos || []) : [])
