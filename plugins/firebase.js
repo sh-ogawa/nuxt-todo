@@ -1,12 +1,12 @@
 import firebase from 'firebase/app'
-import 'firebase/database'
+import 'firebase/firestore'
 
 if (!firebase.apps.length) {
     firebase.initializeApp(
         {
             apiKey: process.env.APIKEY,
-            databaseURL: process.env.DATABASEURL,
-            projectId: process.env.PROJECTID,
+            authDomain: process.env.AUTH_DOMAIN,
+            projectId: process.env.PROJECTID
         }
     )
 }

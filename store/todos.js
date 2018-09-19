@@ -41,6 +41,16 @@ export const mutations = {
 
 export const actions = {
     addTodo ({ commit }, todo) {
+        /*
+        const firestore = firebase.firestore()
+        firestore.settings({ timestampsInSnapshots: true})
+        firestore.collection('todos').add({todo : todo})
+        .then(function(docRef) {
+            console.info("Document written with ID: ", docRef.id);
+        }).catch(function(error) {
+            console.error("Error adding document: ", error);
+        });
+        */
         commit(Mutation.ADD_TODO, todo)
     },
     setTodos ({ commit }, todos) {
@@ -53,11 +63,19 @@ export const actions = {
         const values = state.todos.filter(todo => todo.completed).length === state.todos.length
         commit(Mutation.FILTER_TODOS, values)
     },
+    // handlerイベントから直接dispatchしてくる
     saveTodos ({ state }) {
-        //axios.put('/api/todos', { todos: state.todos })
-        const key = firebase.database().ref('todos').push().key
-        firebase.database().ref('todos/1234').set({
-            name: 'sh-ogawa'
+        const firestore = firebase.firestore()
+        firestore.settings({ timestampsInSnapshots: true})
+        const batch = firestore.batch()
+        const ref = firestore.collection('todos').doc()
+        for(const todo of state.todos) {
+            batch.set(ref, {todo : todo})
+        }
+        batch.commit().then(function () {
+            console.info('add todo')
+        }).catch(function(error){
+            console.error("Error adding document: ", error);
         })
     },
     nuxtServerInit ({ commit }, { req }) {
