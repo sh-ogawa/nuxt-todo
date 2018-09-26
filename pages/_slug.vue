@@ -22,6 +22,7 @@
 <script>
     import TodoHeader from '~/components/header'
     import TodoFooter from '~/components/footer'
+
     export default {
         validate ({ params }) {
             return !params.slug || params.slug === 'active' || params.slug === 'completed'
@@ -36,6 +37,10 @@
             return {
                 editedTodo: null
             }
+        },
+        created: function() {
+            // watchが動かないようにしたいんだけど、やり方判らん
+            this.$store.dispatch('todos/load')
         },
         watch: {
             todos: {
@@ -77,6 +82,7 @@
                 this.$store.dispatch('todos/removeTodo', todo)
             },
             save () {
+                console.info(this)
                 this.$store.dispatch('todos/saveTodos')
             }
         },

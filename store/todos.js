@@ -40,17 +40,23 @@ export const mutations = {
 }
 
 export const actions = {
+    load ({ commit }) {
+
+        const db = firebase.firestore()
+        db.settings({ timestampsInSnapshots: true})
+
+        db.collection('todos').get()
+            .then(querySnapshot => {
+                querySnapshot.forEach(function(doc) {
+                    const data = doc.data();
+                    commit(Mutation.ADD_TODO, data.todo)
+                })
+            })
+            .catch(function(error) {
+                console.log("Error getting documents: ", error);
+            });
+    },
     addTodo ({ commit }, todo) {
-        /*
-        const firestore = firebase.firestore()
-        firestore.settings({ timestampsInSnapshots: true})
-        firestore.collection('todos').add({todo : todo})
-        .then(function(docRef) {
-            console.info("Document written with ID: ", docRef.id);
-        }).catch(function(error) {
-            console.error("Error adding document: ", error);
-        });
-        */
         commit(Mutation.ADD_TODO, todo)
     },
     setTodos ({ commit }, todos) {
